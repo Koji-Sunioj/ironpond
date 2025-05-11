@@ -11,9 +11,11 @@ const HomePage = ({ mode }) => {
         <Col>
           <h1>Hello there</h1>
           <p>
-            My name is Koji Inoue, a Software Developer with many interests and
-            skills to offer you and your organization. Scroll down for more
-            information.
+            My name is Koji Inoue, a professional with strong a background in
+            ERP integrations and Software Development. Having a wide range of
+            interests and technical skills to offer you and your organization, I
+            am ready to tackle the next project and deliver well rounded
+            solutions with your team. Scroll down for more information.
           </p>
         </Col>
       </Row>

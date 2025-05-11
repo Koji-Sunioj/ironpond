@@ -58,7 +58,7 @@ export const highChartsOptions = (metrics) => {
 
   const chartOptions = {
     chart: {
-      type: "column",
+      type: "area",
     },
     title: {
       text: "Website requests in megabytes",

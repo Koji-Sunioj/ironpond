@@ -91,8 +91,9 @@ export const experiences = [
     name: "Opentext",
     title: "Associate Consultant",
     description:
-      "Creating and configuring EDI connections for clients. " +
-      "Communicating with stakeholders and departments for follow ups, reporting. " +
+      "Developing integrations for clients with various ERP systems. " +
+      "Using code for customized actions, data schemas (mappings) for various data types. " +
+      "Communicating with stakeholders and departments for follow ups, SQL reporting. " +
       "Using Agile (Kanban) development practices to streamline tasks.",
   },
   {
@@ -300,6 +301,18 @@ export const skills = [
       "Team Work",
     ],
   },
+  {
+    title: "ERP Integrations",
+    description:
+      "In my most recent tech job at OpenText, I developed integrations for clients using all sorts of ERP softwares.",
+    data: [
+      "Updating and creating data schemas (mappings) for various formats i.e XML, Edifact, JSON",
+      "Developing SQL-based analytical reports on client transactions and integration structures",
+      "Using low-code, C# or legacy APIs for additional integration actions",
+      "Understanding ERP message types, like ORDERS, ORDRSP, DESADV",
+      "Implementation of European or Finnish standardized e-invoicing like Teapps, Finvoice",
+    ],
+  },
 ];
 
 export const summaries = [
@@ -307,32 +320,34 @@ export const summaries = [
     photo: "4380747.jpg",
     title: "Software Developer",
     content:
-      "I enjoy creating software and web applications using modern " +
-      "frameworks such as React.js, and backend using Python or " +
-      "Node.js - powered by the cloud. My style is simple and sleek," +
-      "with a good understanding of CSS and HTML. I have a certification in AWS Cloud Practitioner and " +
-      '<a href="https://www.integrify.io/">Full Stack Web Development</a> from Integrify.',
+      "I enjoy coding solutions and web applications - with " +
+      "strengths in React.js, Python, Node.js and SQL. " +
+      "In my current role in OpenText, I employ C#, " +
+      "low code solutions, and SQL for analytics. " +
+      "I have certificate in " +
+      '<a href="https://www.integrify.io/">Full Stack Web Development via Integrify</a>, a coding bootcamp.',
   },
   {
     photo: "6551283.jpg",
     title: "Cloud Enthusiast",
     content:
-      "Acquired the " +
-      '<a href="https://aws.amazon.com/certification/certified-cloud-practitioner/">AWS Cloud Practitioner</a>' +
-      " certification, laying the foundation for learning to deploy" +
-      " infrastructure via code. Incorporating AWS resources like" +
-      "Cognito, Api Gateway, S3, Lambda and provisioned SQL or NoSQL" +
-      "databases with full stack apps is my current passion.",
+      "Acquiring the " +
+      '<a href="https://aws.amazon.com/certification/certified-cloud-practitioner/">AWS Cloud Practitioner</a> ' +
+      "certification, I know how to integrate software on AWS " +
+      "using infrastructure as code such as AWS Cloudformation or AWS CDK. " +
+      "Services I am familiar with are: EC2, Cognito, Api Gateway, S3, Lambda server, provisioned SQL or NoSQL " +
+      "databases.",
   },
 
   {
     photo: "5124556.jpg",
     title: "Client Advocate",
     content:
-      "Having just over ten years of experience in client facing positions. From serving in a " +
-      '<a href="https://daattravel.com/">well-established Israeli tour company</a> ' +
-      'to a <a href="https://www.oreillyauto.com/">nationally recognized auto parts retailer in the United States</a> ' +
-      "- my mindsight is client focused in any role, providing great user satisfaction.",
+      "Having over ten years experience in client facing positions, I pride myself in client satisfaction. " +
+      'From a <a href="https://daattravel.com/">established Middle-Eastern tour company</a> to ' +
+      'an <a href="https://www.oreillyauto.com/"> auto parts retailer in the United States</a> ' +
+      "- I pride myself in user satisfaction. In my current role at " +
+      "OpenText, I communicate with large international companies for integration projects.",
   },
 ];
 

@@ -13,7 +13,6 @@ const Portfolio = () => {
         <h2>My currently hosted apps:</h2>
         {portfolio.map((item) => {
           const { url, github, title, image, description } = item;
-          console.log(image);
           return (
             <Col lg={6} className="mb-3" key={title}>
               <Card>

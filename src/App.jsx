@@ -27,8 +27,6 @@ function App() {
     }
   });
 
-  console.log(data);
-
   return (
     <BrowserRouter>
       <NavBar data={data} />
