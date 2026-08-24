@@ -22,8 +22,8 @@ const Resume = () => (
                       <p>{description}</p>
 
                       <ul>
-                        {data.map((item) => (
-                          <li>{item}</li>
+                        {data.map((item, n) => (
+                          <li key={n}>{item}</li>
                         ))}
                       </ul>
                     </Accordion.Body>

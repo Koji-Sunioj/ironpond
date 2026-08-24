@@ -1,6 +1,8 @@
-import { useSelector } from "react-redux";
+
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { MetricsContext } from "../App";
 import { highChartsOptions, highMapsOptions } from "../utils/highOptions";
 
 import Highcharts from "highcharts";
@@ -14,7 +16,7 @@ import Spinner from "react-bootstrap/Spinner";
 const Metrics = () => {
   const {
     metrics: { data, loading },
-  } = useSelector((state) => state);
+  } = useContext(MetricsContext);
 
   let chartOptions, mapOptions;
   data !== null &&

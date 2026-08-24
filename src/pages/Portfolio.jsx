@@ -12,7 +12,7 @@ const Portfolio = () => {
       <Row className="mb-2">
         <h2>My currently hosted apps:</h2>
         {portfolio.map((item) => {
-          const { url, github, title, image, description } = item;
+          const { url, github, title, image, description, infra_repos } = item;
           return (
             <Col lg={6} className="mb-3" key={title}>
               <Card>
@@ -21,8 +21,14 @@ const Portfolio = () => {
                     <Card.Img src={image} className="mb-2" />
                   </Link>
                   <Card.Title>{title}</Card.Title>
+                  {infra_repos.length > 0 &&
+                    infra_repos.map((repo) => (
+                      <Card.Subtitle className="mb-2">
+                        {repo.type}: <Link to={repo.link}>{repo.link}</Link>
+                      </Card.Subtitle>
+                    ))}
                   <Card.Subtitle className="mb-2">
-                    Repository: <Link to={github}>{github}</Link>
+                    Front end repository: <Link to={github}>{github}</Link>
                   </Card.Subtitle>
                   {url !== null && (
                     <Card.Subtitle className="mb-2">

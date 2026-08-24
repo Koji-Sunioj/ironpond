@@ -8,33 +8,40 @@ export const imgStyle = {
 
 export const portfolio = [
   {
-    url: "https://magnificent-mochi-99378f.netlify.app/",
-    github: "https://github.com/Koji-Sunioj/fs10-frontend-public",
-    image: "commerce.png",
-    title: "E-commerce app",
+    url: "https://d12ij52awgmubx.cloudfront.net/",
+    github: "https://github.com/Koji-Sunioj/tradewinds-frontend",
+    image: "tradewinds-sales.png",
+    title: "Extract, Transform, Load",
+    infra_repos: [
+      {
+        type: "AWS Glue Jobs and Lambdas",
+        link: "https://github.com/Koji-Sunioj/tradewinds-lambdas",
+      },
+      {
+        type: "AWS Cloudformation",
+        link: "https://github.com/Koji-Sunioj/tradewinds-cfn",
+      },
+    ],
     description:
-      "My first front end project with Integrify Oy, learning the conventions of " +
-      "combining React.js, Typescript and Redux with Api calls. The project required that several " +
-      "features be implemented, such as searching through the data, paginating, changing the color theme " +
-      "mobile friendly viewing and a toolbar",
-  },
-  {
-    url: "https://d1yh66sadgwb8n.cloudfront.net/",
-    github: "https://github.com/Koji-Sunioj/cdk-workshop",
-    image: "albums.png",
-    title: "Photo albums website",
-    description:
-      "Something I whipped up while learning full stack development with cloud " +
-      "at Nordcloud. Uses deployment of a React build to a Cloudfront " +
-      "Distribution, Api calls through Api Gateway, Lambda, DynamoDB for " +
-      "CRUD actions, Cognito authentication and S3 to create photo albums. The resources were provisioned with AWS CDK. " +
-      "I am currently refactoring it to use Typescript and Redux, then minifying the Lambda function code.",
+      "In addition to my previous work experience as an integrations specialist - I have had many tasks " +
+      "which required me to create detailed, and accurate reports of supply chain transactions with SQL " +
+      "and Python. To broaden my skills, I have become familiar with Data Engineering practices for ETL (extract, transform, load). " +
+      "This app in particular uses the Northwinds SQL database which is used on W3 schools for its SQL module. " +
+      "The app in AWS creates randomized sales on a daily basis and stores it in Postgres SQL. Then, at the end of " +
+      "the business week, AWS Glue job is run to aggregate the sales and store them for the website to read, and render graphs. " +
+      "More functionality to come.",
   },
   {
     url: "https://d10r1awwttnvkd.cloudfront.net/",
     github: "https://github.com/Koji-Sunioj/bm",
     image: "webstore.png",
     title: "Old school e-Commerce website",
+    infra_repos: [
+      {
+        type: "AWS Cloudformation",
+        link: "https://github.com/Koji-Sunioj/bm-cfn",
+      },
+    ],
     description:
       "This project is a throwback to websites made maybe 20 years ago, using a web server to " +
       "to serve static files in a unix environemnt for routes. I was just curious how to learn Nginx, and the project expanded to include " +
@@ -44,18 +51,50 @@ export const portfolio = [
       "using cloud config and cloudformation templates (in to a seperate repo) in lieu of AWS CDK.",
   },
   {
-    url: null,
-    github: "https://github.com/Koji-Sunioj/trading-grid-cfn",
+    url: "https://d2njfxu1e215fc.cloudfront.net/",
+    github: "https://github.com/Koji-Sunioj/trading-grid",
     image: "trading-grid.png",
     title: "Supply chain app",
+    infra_repos: [
+      {
+        type: "AWS Cloudformation",
+        link: "https://github.com/Koji-Sunioj/trading-grid-cfn",
+      },
+    ],
     description:
       "Working at OpenText with supply chain solutions, I asked myself: how could an ERP solution " +
       "look like on public cloud like AWS, where a server is accepting and responding to messages " +
       "from a trading partner? So I started to build a cloudformation template for a Lambda server " +
       "which accepts purchase orders and despatch advice messages, and a user can log into a UI " +
-      "and respond to those messages with ammendments or confirmations. Right now I am trying this out " +
-      "in conjuction with the Old school e-Commerce app as the client. A website is not available yet " +
-      "since I am working on Rest API.",
+      "and respond to those messages with ammendments or confirmations. This is now implemented " +
+      "in conjuction with the Old school e-Commerce app as the client.",
+  },
+  {
+    url: "https://d1yh66sadgwb8n.cloudfront.net/",
+    github: "https://github.com/Koji-Sunioj/photo-albums",
+    image: "albums.png",
+    title: "Photo albums website",
+    infra_repos: [
+      { type: "AWS CDK", link: "https://github.com/Koji-Sunioj/cdk-workshop" },
+    ],
+    description:
+      "Something I whipped up while learning full stack development with cloud " +
+      "at Nordcloud. Uses deployment of a React build to a Cloudfront " +
+      "Distribution, Api calls through Api Gateway, Lambda, DynamoDB for " +
+      "CRUD actions, Cognito authentication and S3 to create photo albums. The resources were provisioned with AWS CDK. " +
+      "I am currently refactoring it to use Typescript and Redux, then minifying the Lambda function code.",
+  },
+  {
+    url: "https://magnificent-mochi-99378f.netlify.app/",
+    github: "https://github.com/Koji-Sunioj/fs10-frontend-public",
+    image: "commerce.png",
+    title: "E-commerce app",
+    infra_repos: [],
+    description:
+      "My first front end project with Integrify Oy, learning the conventions of " +
+      "combining React.js, Typescript and Redux with Api calls. The project required that several " +
+      "features be implemented, such as searching through the data, paginating, changing the color theme " +
+      "mobile friendly viewing and a toolbar",
   },
 ];
 
@@ -87,12 +126,12 @@ export const education = [
 export const experiences = [
   {
     location: "Tampere, Finland",
-    date: "2023",
+    date: "2023-2026",
     name: "Opentext",
     title: "Associate Consultant",
     description:
       "Developing integrations for clients with various ERP systems. " +
-      "Using code for customized actions, data schemas (mappings) for various data types. " +
+      "Using code (C#, DLS) to implement module actions, data schemas (mappings) for various data types. " +
       "Communicating with stakeholders and departments for follow ups, SQL reporting. " +
       "Using Agile (Kanban) development practices to streamline tasks.",
   },

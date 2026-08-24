@@ -11,36 +11,49 @@ import NavBar from "./components/NavBar";
 import Portfolio from "./pages/Portfolio";
 import Container from "react-bootstrap/Container";
 
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchMetrics } from "./app/reducers/metricsSlice";
+import { useEffect, createContext, useState } from "react";
 
-function App() {
-  const dispatch = useDispatch();
-  const {
-    metrics: { data, loading, error },
-  } = useSelector((state) => state);
+export const MetricsContext = createContext(null);
 
-  useEffect(() => {
-    if (data === null && !loading && !error) {
-      dispatch(fetchMetrics());
-    }
+const App = () => {
+  const metricsUrl =
+    "https://ironpondstack-logbucketcc3b17e8-1t5bduk77ymwx.s3.amazonaws.com/app_data/metrics.json";
+  const [metrics, setMetrics] = useState({
+    data: null,
+    loading: false,
   });
 
+  useEffect(() => {
+    fetchMetrics();
+  }, []);
+
+  const fetchMetrics = async () => {
+    setMetrics({ data: null, loading: true });
+    const request = await fetch(metricsUrl);
+    const { status } = request;
+
+    if (status === 200) {
+      const data = await request.json();
+      setMetrics({ data: data, loading: false });
+    }
+  };
+
   return (
-    <BrowserRouter>
-      <NavBar data={data} />
-      <Container>
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/metrics" element={<Metrics />}></Route>
-          <Route path="/resume" element={<Resume />}></Route>
-          <Route path="/portfolio" element={<Portfolio />}></Route>
-          <Route path="/about" element={<About />}></Route>
-        </Routes>
-      </Container>
-    </BrowserRouter>
+    <MetricsContext.Provider value={{metrics}}>
+      <BrowserRouter>
+        <NavBar />
+        <Container>
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/metrics" element={<Metrics />}></Route>
+            <Route path="/resume" element={<Resume />}></Route>
+            <Route path="/portfolio" element={<Portfolio />}></Route>
+            <Route path="/about" element={<About />}></Route>
+          </Routes>
+        </Container>
+      </BrowserRouter>
+    </MetricsContext.Provider>
   );
-}
+};
 
 export default App;
