@@ -100,6 +100,13 @@ export const portfolio = [
 
 export const education = [
   {
+    place: "Aalto EE",
+    date: "October 2026 - present",
+    description:
+      "A program to educate an IT professional on modern Data Engineering " +
+      "tooling, best practices and skills required for the role."
+  },
+  {
     place: "Integrify Full Stack Development Academy",
     date: "April 2022 - August 2022",
     description:
