@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Resume from "./pages/Resume";
 import Metrics from "./pages/Metrics";
 import HomePage from "./pages/HomePage";
+import NotFound from "./pages/404";
 import NavBar from "./components/NavBar";
 import Portfolio from "./pages/Portfolio";
 import Container from "react-bootstrap/Container";
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/resume" element={<Resume />}></Route>
             <Route path="/portfolio" element={<Portfolio />}></Route>
             <Route path="/about" element={<About />}></Route>
+            <Route path="/*" element={<NotFound />}></Route>
           </Routes>
         </Container>
       </BrowserRouter>

@@ -14,7 +14,9 @@ const NavBar = ({ data }) => {
       const [key, value] = entry;
       document.documentElement.style.setProperty(key, value);
     });
-    document.body.style.backgroundColor = mode === "light" ? "black" : "white";
+   
+    document.body.setAttribute('class', '');
+    document.body.classList.add(newMode);
     setMode(newMode);
   };
 
