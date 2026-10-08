@@ -1,6 +1,9 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
+
+import { Link } from "react-router-dom";
 
 import { skills, summaries, imgStyle } from "../utils/data.js";
 
@@ -18,6 +21,26 @@ const HomePage = ({ mode }) => {
             solutions with your team. Scroll down for more information.
           </p>
         </Col>
+        <Alert>
+          <p>
+            Update October 2026: I have been recently accepted to Aalto EE's
+            Data Engineering and AI FEC (further educated with companies)
+            program. This program specalizes in educating IT professionals to
+            work in a Data Engineering role, while simultaneously working at
+            company to understand their needs for a span of six months for a fee
+            of 8,400 euros to Aalto EE - after which a work contract is
+            negotiated.
+          </p>
+
+          <p>
+            If you know a company or a start up in which would benefit from my
+            skills or participation in this program,{" "}
+            <Link to={"https://www.linkedin.com/in/koji-inoue-14647b56/"}>
+              please get in touch with me
+            </Link>{" "}
+            and I will be happy to discuss more details.
+          </p>
+        </Alert>
       </Row>
       <Row className="mb-2">
         <h2>I am a...</h2>
