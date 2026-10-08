@@ -27,8 +27,8 @@ export const portfolio = [
       "which required me to create detailed, and accurate reports of supply chain transactions with SQL " +
       "and Python. To broaden my skills, I have become familiar with Data Engineering practices for ETL (extract, transform, load). " +
       "This app in particular uses the Northwinds SQL database which is used on W3 schools for its SQL module. " +
-      "The app in AWS creates randomized sales on a daily basis and stores it in Postgres SQL. Then, at the end of " +
-      "the business week, AWS Glue job is run to aggregate the sales and store them for the website to read, and render graphs. " +
+      "Randomized sales care created on a daily basis and stores it in Postgres SQL. At the end of " +
+      "the business week, AWS Glue job is run to differentially load data into Databricks which is then aggregated to create a json file for front end to render as graps" +
       "More functionality to come.",
   },
   {
