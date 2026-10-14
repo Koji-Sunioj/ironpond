@@ -79,7 +79,7 @@ export const monthlyVisitsOptions = (metrics) => {
   });
 
   const visits = metrics.map((dict) => dict.visits);
-  const dates = metrics.map((dict) => dict.month);
+  const dates = metrics.map((dict) => dict.month.substring(0,7));
 
   const chartOptions = {
     chart: {
