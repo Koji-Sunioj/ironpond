@@ -1,9 +1,12 @@
-
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { MetricsContext } from "../App";
-import { monthlyVisitsOptions, uriVisitsOptions, countryVisitsOptions } from "../utils/highOptions";
+import {
+  monthlyVisitsOptions,
+  uriVisitsOptions,
+  countryVisitsOptions,
+} from "../utils/highOptions";
 
 import Highcharts from "highcharts";
 import HighMaps from "highcharts/highmaps";
@@ -18,35 +21,34 @@ const Metrics = () => {
     metrics: { data, loading },
   } = useContext(MetricsContext);
 
-  let monthlyVisits,uriVisits, mapVisits;
+  let monthlyVisits, uriVisits, mapVisits;
   if (data !== null) {
     monthlyVisits = monthlyVisitsOptions(data.months);
     uriVisits = uriVisitsOptions(data.uris);
     mapVisits = countryVisitsOptions(data.locations);
   }
- 
+
   return (
     <div>
       <Row>
         <Col lg="6">
           <h2>Site Metrics</h2>
           <p>
-            AWS records website visits via properties such as{" "}
+            When a user accesses this website, the request is passed to the
+            user's closest AWS data center. In AWS lingo, this is called an{" "}
             <Link to="https://aws.amazon.com/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc#Global_Edge_Network">
               edge point location
             </Link>
-            , a unique request ID, date and other HTTP header attributes
-            (cookies excluded). I developed a Lamda function that measure daily
-            logs files through AWS Athena, saves the raw data in CSV format to a
-            bucket where another lambda is triggered - which aggregates the data
-            with Python and saves the data to readable file for this webiste
-            (without a backend server).
+            . The request metadata gets stored in log files, denoting the URI
+            (website path, like homepage etc.), IP address, device information
+            and other useful details.
           </p>
           <p>
-            Heavy computation of visit metrics is offloaded to AWS Athena and
-            Python once a day, allowing the website to display visitor
-            statistics with as little memory load as possible. Log files are
-            automatically deleted after 3 days.
+            I developed a series of functions that reads the previous days log
+            files, inserts it into Databricks and computes a JSON file which
+            these graphs use below. All of the infrastructure is written in
+            Cloudformation YAML, Lambda functions with Python, and the front end
+            (this website) in React. Orchestration is done with Github actions.
           </p>
         </Col>
         <Col lg="6">
@@ -87,7 +89,7 @@ const Metrics = () => {
             <HighchartsReact highcharts={Highcharts} options={monthlyVisits} />
           )}
         </Col>
-        
+
         <Col lg="6">
           {loading && (
             <div
