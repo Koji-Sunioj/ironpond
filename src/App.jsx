@@ -18,7 +18,7 @@ export const MetricsContext = createContext(null);
 
 const App = () => {
   const metricsUrl =
-    "https://ironpondstack-logbucketcc3b17e8-1t5bduk77ymwx.s3.amazonaws.com/app_data/metrics.json";
+    "app_data/visits.json";
   const [metrics, setMetrics] = useState({
     data: null,
     loading: false,

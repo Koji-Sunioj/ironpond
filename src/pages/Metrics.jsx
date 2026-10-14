@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { MetricsContext } from "../App";
-import { highChartsOptions, highMapsOptions } from "../utils/highOptions";
+import { monthlyVisitsOptions, uriVisitsOptions, countryVisitsOptions } from "../utils/highOptions";
 
 import Highcharts from "highcharts";
 import HighMaps from "highcharts/highmaps";
@@ -18,14 +18,13 @@ const Metrics = () => {
     metrics: { data, loading },
   } = useContext(MetricsContext);
 
-  let chartOptions, mapOptions;
-  data !== null &&
-    (() => {
-      const { monthly, countries } = data;
-      chartOptions = highChartsOptions(monthly);
-      mapOptions = highMapsOptions(countries);
-    })();
-
+  let monthlyVisits,uriVisits, mapVisits;
+  if (data !== null) {
+    monthlyVisits = monthlyVisitsOptions(data.months);
+    uriVisits = uriVisitsOptions(data.uris);
+    mapVisits = countryVisitsOptions(data.locations);
+  }
+ 
   return (
     <div>
       <Row>
@@ -50,24 +49,6 @@ const Metrics = () => {
             automatically deleted after 3 days.
           </p>
         </Col>
-      </Row>
-      <Row>
-        <Col lg="6">
-          {loading && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "40px",
-              }}
-            >
-              <Spinner animation="grow" variant="primary" size="lg" />
-            </div>
-          )}
-          {data !== null && (
-            <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-          )}
-        </Col>
         <Col lg="6">
           {loading && (
             <div
@@ -84,8 +65,43 @@ const Metrics = () => {
             <HighchartsReact
               highcharts={HighMaps}
               constructorType={"mapChart"}
-              options={mapOptions}
+              options={mapVisits}
             />
+          )}
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          {loading && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "40px",
+              }}
+            >
+              <Spinner animation="grow" variant="primary" size="lg" />
+            </div>
+          )}
+          {data !== null && (
+            <HighchartsReact highcharts={Highcharts} options={monthlyVisits} />
+          )}
+        </Col>
+        
+        <Col lg="6">
+          {loading && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "40px",
+              }}
+            >
+              <Spinner animation="grow" variant="primary" size="lg" />
+            </div>
+          )}
+          {data !== null && (
+            <HighchartsReact highcharts={Highcharts} options={uriVisits} />
           )}
         </Col>
       </Row>

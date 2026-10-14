@@ -1,26 +1,13 @@
 import worldMap from "@highcharts/map-collection/custom/world-lowres.geo.json";
 
-export const highMapsOptions = (countries) => {
-  const filter_countries = {};
-  Object.keys(countries).forEach((country) => {
-    const mb = Number((countries[country] / 1000000).toFixed(2));
-
-    if (mb > 0) {
-      filter_countries[country.toLowerCase()] = mb;
-    }
-  });
-
-  const entries = Object.entries(filter_countries);
-
+export const countryVisitsOptions = (countries) => {
+  const series = countries.map((country)=>[country["country"].toLowerCase(),country["visits"]])
   const mapOptions = {
     chart: {
       map: worldMap,
     },
     title: {
       text: "Website traffic per country",
-    },
-    subtitle: {
-      text: "measured by sum of megabytes per AWS Edgepoint access to website",
     },
     mapNavigation: {
       enabled: true,
@@ -40,41 +27,86 @@ export const highMapsOptions = (countries) => {
           },
         },
 
-        data: entries,
+        data: series,
       },
     ],
   };
+  return mapOptions; 
+}
 
-  return mapOptions;
-};
+export const uriVisitsOptions = (metrics) => {
 
-export const highChartsOptions = (metrics) => {
-  const load = metrics.map((arr) => {
-    const mb = arr.server_load / 1000000;
-    return Number(mb.toFixed(2));
-  });
-
-  const dates = metrics.map((dict) => dict.query_date.substring(0, 7));
+  const visits = metrics.map((dict) => dict.visits);
+  const uris = metrics.map((dict) => dict.uri);
 
   const chartOptions = {
     chart: {
-      type: "area",
+      type: "column",
     },
     title: {
-      text: "Website requests in megabytes",
-    },
-    subtitle: {
-      text: "measured by sum of megabytes grouped by month, to all websites URIs",
+      text: "Website uri visits",
     },
     xAxis: [
       {
-        categories: dates,
+        categories: uris,
+        title: {
+          text: "uri",
+        },
+      },
+    ],
+    yAxis: [
+      {
+        title: {
+          text: "count",
+        },
       },
     ],
     series: [
       {
-        name: "megabytes",
-        data: load,
+        name: "visits",
+        data: visits,
+      },
+    ],
+  };
+  return chartOptions
+}
+
+export const monthlyVisitsOptions = (metrics) => {
+  metrics.sort((prev, next) => {
+    if (prev.month < next.month) return -1;
+    if (prev.month > next.month) return 1;
+    return 0;
+  });
+
+  const visits = metrics.map((dict) => dict.visits);
+  const dates = metrics.map((dict) => dict.month);
+
+  const chartOptions = {
+    chart: {
+      type: "line",
+    },
+    title: {
+      text: "Monthly visitors",
+    },
+    xAxis: [
+      {
+        categories: dates,
+        title: {
+          text: "month",
+        },
+      },
+    ],
+    yAxis: [
+      {
+        title: {
+          text: "count",
+        },
+      },
+    ],
+    series: [
+      {
+        name: "visits",
+        data: visits,
       },
     ],
   };
